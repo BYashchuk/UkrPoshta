@@ -1,0 +1,38 @@
+<div class="container">
+    <div id='gettords'>. <p></p>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h5 class="text-center">Перейдіть до вкладки Orders для того щоб працювати з плагіном UkrPosta</h5>
+            <div id="orderOne"></div>
+        </div>
+        <div class="col-4">
+            <h5 class="text-center">Оберіть Ваш Order</h5>
+            <div id="orderTwo"></div>
+        </div>
+        <div class="col-4">
+            <h5 class="text-center">Натисніть на кнопку...</h5>
+            <div id="orderTree"></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var cookies = document.cookie.split(";");
+    var link = ''
+    for (var i = 0; i < cookies.length; i++) {
+        var parts = cookies[i].split("=")
+        var name = parts[0]
+        var value = parts[1]
+        if (name === ' shop' && value != undefined) {
+            link = value
+            var str = "Повернутись в Orders";
+            var result = str.link("http://" + link + "/admin/orders");
+            var div = document.getElementById("gettords")
+            div.innerHTML = result;
+        }
+    }
+
+  
+</script>

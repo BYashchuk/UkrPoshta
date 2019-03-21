@@ -1,0 +1,322 @@
+<script>
+    var userShop = '{{ shop }}'
+    var userOrderId = '{{ orderId }}'
+    var token = '{{token}}'
+</script>
+<div class="d-n">
+    <button id='gettord' onclick="view('{{orderId}}','{{shop}}')">V</button>
+    <button id='shoTrackNum' onclick="shoTrackNum(event)">V</button>
+
+    <div id='orderIdTrackId'>{{ orderId }}</div>
+    <div id='token'>{{ token }}</div>
+    <div id='shop'>{{ shop }}</div>
+    <input name="userBearer" type="text" id="userBearer" value='f9027fbb-cf33-3e11-84bb-5484491e2c94' />
+    <input name="userToken" type="text" id="userToken" value='ba5378df-985e-49c5-9cf3-d222fa60aa68' />
+    <input name="userUUID" type="text" id="userUUID" value='2304bbe5-015c-44f6-a5bf-3e750d753a17' />
+</div>
+
+<div class=" alert-fix-bottom alert-msg">
+
+</div>
+
+<div class=" alert-fix-bottom alert-msg-done">
+
+</div>
+
+<div id="showBarCode" style="display: none" class="ml-1 t-c">Ваш TRACK ID: <label id="resultBarcode"></label><br/>
+<a class="text-center" href="http://ukrposhta.ua/vidslidkuvati-forma-poshuku">Відстежити</a></div>
+<div id='logoUkrPosht'></div> 
+<div class="container">
+
+
+    <form id='enterYouOrderAdress' class="steps" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="">
+        <ul id="progressbar">
+            <li class="active">Адреса відправника</li>
+            <li>Адреса отримувача</li>
+            <li>Відправник / Отримувач</li>
+            <li>Відправлення</li>
+        </ul>
+
+
+
+        <fieldset>
+            <h2 class="fs-title">Адреса відправника</h2>
+
+            <div class="hs_email field hs-form-field">
+                <label for="passRegion">Букв. Код Країни (англійською)*</label>
+                <input id="passRegion" name="passRegion" data-name="passRegionSender" value="UA" disabled required="required"
+                    type="text" value="" placeholder="" data-rule-required="true" data-msg-required="region">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+            <div class="hs_firstname field hs-form-field">
+                <label for="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Поштовий індекс *</label>
+                <input id="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983 postcode" data-name="postcodeSender"
+                    name="postcode" required="required" type="number" value="" placeholder="" data-rule-required="true"
+                    data-msg-required="postcode">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="hs_email field hs-form-field">
+                <label for="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Назва області *</label>
+                <input id="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983 region" name="region" data-name="regionSender"
+                    required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="region">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="hs_email field hs-form-field">
+                <label for="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Назва мiста / населеного пункту *</label>
+                <input id="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983 city" name="city" data-name="citySender"
+                    required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="city">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="hs_email field hs-form-field hs_total_number_of_constituents_in_your_database">
+                <label for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">Назва
+                    району *</label>
+                <input id="edit-submitted-constituent-base-total-constituents district" class="form-text hs-input" name="district"
+                    data-name="districtSender" required="required" size="60" maxlength="128" type="text" value=""
+                    placeholder="" data-rule-required="true" data-msg-required="district">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+
+            <div class="hs_email field hs-form-field hs_total_number_of_constituents_in_your_database">
+                <label for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">
+                    Назва вулиці *</label>
+                <input id="edit-submitted-constituent-base-total-constituents street" class="form-text hs-input" name="street"
+                    data-name="streetSender" required="required" size="60" maxlength="128" type="text" value=""
+                    placeholder="" data-rule-required="true" data-msg-required="street">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="hs_email field hs-form-field hs_total_number_of_constituents_in_your_database">
+                <label for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">
+                    Номер будинку *</label>
+                <input id="edit-submitted-constituent-base-total-constituents houseNumber" class="form-text hs-input"
+                    name="houseNumber" data-name="houseNumberSender" required="required" size="60" maxlength="128" type="text"
+                    value="" placeholder="" data-rule-required="true" data-msg-required="houseNumber">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="hs_email field hs-form-field hs_total_number_of_constituents_in_your_database">
+                <label for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">Номер
+                    квартири *</label>
+                <input id="edit-submitted-constituent-base-total-constituents apartmentNumber" class="form-text hs-input"
+                    name="apartmentNumber" data-name="apartmentNumberSender" required="required" size="60" maxlength="128"
+                    type="number" value="" placeholder="" data-rule-required="true" data-msg-required="apartmentNumber">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+            <input type="button" data-page="1" name="next" class="next action-button" value="Next" />
+        </fieldset>
+
+
+
+
+
+        <fieldset>
+            <h2 class="fs-title">Адреса отримувача</h2>
+            <div class="hs_email field hs-form-field">
+                <label for="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Букв. Код Країни (англійською 'UA'
+                    'RU' ...)*</label>
+                <input id="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983" name="passRegion" data-name="passRegionRecipient"
+                    required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="region">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+            <div class="hs_firstname field hs-form-field">
+                <label for="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Поштовий індекс *</label>
+                <input id="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983 postcode" data-name="postcodeRecipient"
+                    name="postcode" required="required" type="number" value="" placeholder="" data-rule-required="true"
+                    data-msg-required="postcode">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="hs_email field hs-form-field">
+                <label for="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Назва області *</label>
+                <input id="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983 region" name="region" data-name="regionRecipient"
+                    required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="region">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="hs_email field hs-form-field">
+                <label for="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">Назва мiста / населеного пункту *</label>
+                <input id="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983 city" name="city" data-name="cityRecipient"
+                    required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="city">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="hs_email field hs-form-field hs_total_number_of_constituents_in_your_database">
+                <label for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">Назва
+                    району *</label>
+                <input id="edit-submitted-constituent-base-total-constituents district" class="form-text hs-input" name="district"
+                    data-name="districtRecipient" required="required" size="60" maxlength="128" type="text" value=""
+                    placeholder="" data-rule-required="true" data-msg-required="district">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+
+            <div class="hs_email field hs-form-field hs_total_number_of_constituents_in_your_database">
+                <label for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">
+                    Назва вулиці *</label>
+                <input id="edit-submitted-constituent-base-total-constituents street" class="form-text hs-input" name="street"
+                    data-name="streetRecipient" required="required" size="60" maxlength="128" type="text" value=""
+                    placeholder="" data-rule-required="true" data-msg-required="street">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="hs_email field hs-form-field hs_total_number_of_constituents_in_your_database">
+                <label for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">
+                    Номер будинку *</label>
+                <input id="edit-submitted-constituent-base-total-constituents houseNumber" class="form-text hs-input"
+                    name="houseNumber" data-name="houseNumberRecipient" required="required" size="60" maxlength="128"
+                    type="text" value="" placeholder="" data-rule-required="true" data-msg-required="houseNumber">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="hs_email field hs-form-field hs_total_number_of_constituents_in_your_database">
+                <label for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">Номер
+                    квартири *</label>
+                <input id="edit-submitted-constituent-base-total-constituents apartmentNumber" class="form-text hs-input"
+                    name="apartmentNumber" data-name="apartmentNumberRecipient" required="required" size="60" maxlength="128"
+                    type="number" value="" placeholder="" data-rule-required="true" data-msg-required="apartmentNumber">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <input type="button" data-page="2" name="previous" class="previous action-button" value="Previous" />
+            <input type="button" data-page="2" name="next" class="next action-button" value="Next" />
+
+        </fieldset>
+
+
+
+        <fieldset>
+            <h2 class="fs-title">Відправник / Отримувач</h2>
+
+            <div class=" d-n form-item webform-component webform-component-textfield hs_average_gift_size_in_year_2 field hs-form-field"
+                id="webform-component-cultivation--amount-2">
+                <label for="edit-submitted-cultivation-amount-2 average_gift_size_in_year_2-99a6d115-5e68-4355-a7d0-529207feb0b3_3256">до</label>
+                <input id="edit-submitted-cultivation-amount-2" class="form-text hs-input" name="average_gift_size_in_year_2"
+                    required="required" size="60" maxlength="128" type="number" value="321" placeholder=""
+                    data-rule-required="true" data-msg-required="Please enter a valid number">
+                <span class="error1" style="display: none;">
+                    <i class="error-log fa fa-exclamation-triangle"></i>
+                </span>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12 col-sm-6">
+                    <h2 class="fs-title">Відправник</h2>
+
+
+                    <div class="form-group">
+                        <label for="firstName">Ім'я</label>
+                        <input type="text" data-sender='firstName' name="firstName" id="firstName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Прізвище</label>
+                        <input type="text" data-sender='lastName' name="lastName" id="lastName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="middleName">По батькові</label>
+                        <input type="text" data-sender='middleName' name="middleName" id="middleName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Номер телефону</label>
+                        <input type="number" data-sender='phoneNumber' name="phoneNumber" id="phoneNumber" class="form-control">
+                    </div>
+
+                </div>
+                <div class="col-12 col-sm-6">
+                    <h2 class="fs-title">Отримувач</h2>
+                    <div class="form-group">
+                        <label for="firstName">Ім'я</label>
+                        <input type="text" data-recipient='firstName' name="firstName" id="firstName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Прізвище</label>
+                        <input type="text" data-recipient='lastName' name="lastName" id="lastName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="middleName">По батькові</label>
+                        <input type="text" data-recipient='middleName' name="middleName" id="middleName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Номер телефону</label>
+                        <input type="number" data-recipient='phoneNumber' name="phoneNumber" id="phoneNumber" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <input type="button" data-page="3" name="previous" class="previous action-button" value="Previous" />
+            <input type="button" data-page="3" name="next" class="next action-button" value="Next" />
+
+        </fieldset>
+
+
+
+        <fieldset>
+            <h2 class="fs-title">Відправлення</h2>
+
+
+            <div class="form-group">
+                <label for="weight">вага (г)(максимум 30 000 грам)</label>
+                <input data-weight='weight' type="number" data-recipient='weight' name="weight" id="weight" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="length">довжина найбільшої сторони(см)</label>
+                <input data-length='length' type="number" data-recipient='length' name="length" id="length" class="form-control">
+            </div>
+
+
+
+
+            <div class="wrap">
+                <div class="block">
+                    <span>Оплата за пересилання відправлення при отриманні. Oплата відправником.</span>
+                    <input id="cheap" type="checkbox" />
+                    <label for="cheap"></label>
+                </div>
+            </div>
+
+            <input type="button" data-page="4" name="previous" class="previous action-button" value="Previous" />
+            {{!-- <input id="submitOrder" onclick="addAddressesSender()" class="hs-button primary large action-button next"
+                type="submit" value="Submit"> --}}
+            <button class="action-button" id='sendAllData' onclick="addAddressesSender(event)"> Send</button>
+        </fieldset>
+    </form>
+</div>
